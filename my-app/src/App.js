@@ -1,26 +1,40 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
+// components
+import AccountDashboard from './components/AccountDashboard';
+import Projects from './components/Projects';
+import Values from './components/Values';
+import Login from './components/Login';
+import Register from './components/Register';
+
+
 function App() {
+  const [] = usersReducers();
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Router to='/register' component={Register} />
+        <Route to='/login' component={Login} />
+        <PrivateRoute exact path='/' component={AccountDashboard} />
+        <Route to='/values' component={Values} />
+        <Route to='/projects' component={Projects} />
+      </Router>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    values: state.values,
+    projects: state.projects
+  }
+}
+
+export default connect(mapStateToProps, { usersReducer })(App);
