@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { getUser } from '../actions/userActions';
 import styled from 'styled-components';
 
-const Login = props => {
-  const [user, setUser] = useState({ username: '', password: '' });route
+const Login = (props) => {
+  componentWillUpdate(); {
+    this.props.getUser(); 
+  }
 
-  const login = e => {
+
+  const handleSubmit = (e) => {
      e.preventDefault();
-    axios
-    //   .post('http://localhost:5000/api/login''http://localhost:3000 , user)
-      .then(res => {
-        localStorage.setItem('token', res.data.payload);
-        props.history.push('/bubbles');
-      })
-      .catch(error => console.log(error));
+    dispatch({
+      type: 'USER_GET_START',
+      payload: 'user'
+    })
   };
 
   const handleChange = e => {
@@ -25,7 +25,7 @@ const Login = props => {
     <Wrapper>
       <h1>Welcome to Essentialism!</h1>
       
-      <Form onSubmit={login}>
+      <Form onSubmit={handleSubmit}>
         <Input
           type='text'
           name='username'

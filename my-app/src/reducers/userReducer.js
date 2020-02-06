@@ -13,11 +13,13 @@ import {
   USER_DELETE_FAILURE
 } from "../actions/user.actions";
 
-const initialState = {
-  user: {}
+export const stateValues = {
+  user: {}, 
+  values: {},
+  projects: []
 };
 
-const userReducer = (state = initialState, action) => {
+const userReducer = (state = stateValues, action) => {
   console.log(`userReducer: state: `, state);
   switch (action.type) {
     case USER_GET_START:

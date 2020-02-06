@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-//import { Reducer } from '../reducers' here;
+import userReducer  from '../reducers/userReducer';
 
 // import projects & values
 
-export default class AccountDashboard extends Component {
+ class AccountDashboard extends Component {
     componentWillUpdate() {
         this.props.userReducer();
     }    
@@ -28,7 +28,7 @@ export default class AccountDashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-    info: state.something//state var here
+    info: state.something //state var here
 });
 
 export default connect(mapStateToProps, { userReducer })(AccountDashboard);
