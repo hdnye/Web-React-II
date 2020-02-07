@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import logo from './logo.svg';
+
 import './App.css';
 
 // components
-import AccountDashboard from './components/AccountDashboard';
+import AccountDashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 import Projects from './components/Projects';
 import Values from './components/Values';
-import Login from './components/Login';
+import Login from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import userReducer from './reducers/userReducer';
 
