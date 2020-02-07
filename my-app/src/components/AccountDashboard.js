@@ -28,7 +28,7 @@ import userReducer  from '../reducers/userReducer';
 }
 
 const mapStateToProps = state => ({
-    info: state.something //state var here
+    info: state.user //state var here
 });
 
 export default connect(mapStateToProps, { userReducer })(AccountDashboard);
