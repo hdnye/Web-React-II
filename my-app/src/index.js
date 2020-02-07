@@ -10,7 +10,10 @@ import userReducer from '../src/reducers/userReducer';
 
 const middleware = [thunk]
 
-const store = createStore(userReducer, applyMiddleware(...middleware),   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(
+    userReducer, 
+    applyMiddleware(...middleware));   
+    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 
 ReactDOM.render(
