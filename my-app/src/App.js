@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
 // components
-import AccountDashboard from './components/Dashboard';
+import AccountDashboard from './components/AccountDashboard';
 import PrivateRoute from './components/PrivateRoute';
 import Projects from './components/Projects';
 import Values from './components/Values';
-import Login from './components/LoginForm';
+import Login from './components/Login';
 import RegisterForm from './components/RegisterForm';
 import userReducer from './reducers/userReducer';
 
