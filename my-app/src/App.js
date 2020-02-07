@@ -11,7 +11,7 @@ import Projects from './components/Projects';
 import Values from './components/Values';
 import Login from './components/Login';
 import RegisterForm from './components/RegisterForm';
-import userReducer from './reducers/userReducer';
+import rootReducer from './reducers';
 
 
 function App() {
@@ -38,4 +38,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { userReducer })(App);
+export default connect(mapStateToProps, { rootReducer })(App);

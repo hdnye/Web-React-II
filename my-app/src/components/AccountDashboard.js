@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import userReducer  from '../reducers/userReducer';
+import rootReducer  from '../reducers';
 
 // import projects & values
 
@@ -31,4 +31,4 @@ const mapStateToProps = state => ({
     info: state.user //state var here
 });
 
-export default connect(mapStateToProps, { userReducer })(AccountDashboard);
+export default connect(mapStateToProps, { rootReducer })(AccountDashboard);

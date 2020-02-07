@@ -6,12 +6,12 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import userReducer from '../src/reducers/userReducer';
+import  rootReducer from './reducers';
 
 const middleware = [thunk]
 
 const store = createStore(
-    userReducer, 
+    rootReducer, 
     applyMiddleware(...middleware));   
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 

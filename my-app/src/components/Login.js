@@ -1,84 +1,96 @@
-// import React from 'react';
-// import { getUser } from '../actions/userActions';
-// import styled from 'styled-components';
 
-// const Login = (props) => {
-//   componentWillUpdate(); {
-//     this.props.getUser(); 
-//   }
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getUser } from '../actions';
+import styled from 'styled-components';
 
+class Login extends React.Component {
+    constructor() {
+      super();
+        this.state = {
+         username: '',
+         password: ''   
+    }
+} 
 
-//   const handleSubmit = (e) => {
-//      e.preventDefault();
-//     dispatch({
-//       type: 'USER_GET_START',
-//       payload: 'user'
-//     })
-//   };
+   handleSubmit = (e) => {
+     e.preventDefault();
+     e.target.reset();
+  };
 
-//   const handleChange = e => {
-//     setUser({ ...user, [e.target.name]: e.target.value });
-//     console.log(user);
-//   };
+   handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+    
+  };
 
-//   return (
-//     <Wrapper>
-//       <h1>Welcome to Essentialism!</h1>
+  render() {
+  return (
+    <Wrapper>
+      <h1>Welcome to Essentialism!</h1>
       
-//       <Form onSubmit={handleSubmit}>
-//         <Input
-//           type='text'
-//           name='username'
-//           value={user.username}
-//           placeholder='Enter Username'
-//           onChange={handleChange}
-//         />
-//         <Input
-//           type='password'
-//           name='password'
-//           value={user.password}
-//           placeholder='Enter Password'
-//           onChange={handleChange}
-//         />
-//         <Button>Login</Button>
-//       </Form>
-//     </Wrapper>
-//   );
-// };
+      <Form onSubmit={this.state.handleSubmit}>
+        <Input
+          type='text'
+          name='username'
+          value={this.state.username}
+          placeholder='Enter Username'
+          onChange={this.state.handleChange}
+        />
+        <Input
+          type='password'
+          name='password'
+          value={this.state.password}
+          placeholder='Enter Password'
+          onChange={this.state.handleChange}
+        />
+        <Button>Login</Button>
+      </Form>
+    </Wrapper>
+  );
+ };
+};
 
-// export default Login;
+const mapPropsToState = state => {
+ return {
+   error: state.error,
+     username: state.username,
+     password: state.password    
+ }
+}
 
-// // Adding styling
+export default connect(mapPropsToState, { getUser })(Login);
 
-// const Wrapper = styled.div`
-//   width: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   background:  	#2dc8aa;
-// `;
+// Adding styling
 
-// const Button = styled.button`
-//   background: #ee9701;
-//   border-radius: 20px;
-//   padding: 10px;
-//   margin: 5px;
-//   font-weight: bold;
-// `;
+const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background:  	#2dc8aa;
+`;
 
-// const Input = styled.input`
-//   padding: 10px;
-//   margin: 10px;
-//   border-radius: 20px;
-//   border: 1px black;
-// `;
+const Button = styled.button`
+  background: #ee9701;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px;
+  font-weight: bold;
+`;
 
-// const Form = styled.form`
-//   background: #89DCF5;
-//   border-radius: 15px;
-//   border: 7px ridge rgba(28,110,164,0.77);
-//   padding: 40px;
-//   margin: 0;
-//   box-shadow: 10px 10px 8px #888888;
-// `;
+const Input = styled.input`
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  border: 1px black;
+`;
+
+const Form = styled.form`
+  background: #89DCF5;
+  border-radius: 15px;
+  border: 7px ridge rgba(28,110,164,0.77);
+  padding: 40px;
+  margin: 0;
+  box-shadow: 10px 10px 8px #888888;
+`;

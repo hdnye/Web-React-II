@@ -1,12 +1,12 @@
 import React, { useState, useReducer } from 'react';
 import '../App.css';
-import userReducer from '../reducers/userReducer';
+import rootReducer from '../reducers';
 // registration form 
 // basic information to register for the app
 
 export default function RegisterForm () {
     const [info, setInfo] = useState('');
-    const [state, dispatch] = useReducer(userReducer);
+    const [state, dispatch] = useReducer(rootReducer);
 
 
     const handleChange = e => {

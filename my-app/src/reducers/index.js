@@ -1,24 +1,14 @@
 import {
-    USER_GET_START,
-    USER_GET_SUCCESS,
-    USER_GET_FAILURE,
-    USER_POST_START,
-    USER_POST_SUCCESS,
-    USER_POST_FAILURE,
-    USER_PUT_START,
-    USER_PUT_SUCCESS,
-    USER_PUT_FAILURE,
-    USER_DELETE_START,
-    USER_DELETE_SUCCESS,
-    USER_DELETE_FAILURE
-  } from "../actions/userActions";
+    USER_LOGIN,
+    ERROR
+  } from "../actions";
   
   const initialState = {
     user: {}
   };
   
-  const userReducer = (state = initialState, action) => {
-    console.log(`userReducer: state: `, state);
+  const rootReducer = (state = initialState, action) => {
+    
     switch (action.type) {
       case USER_GET_START:
         return {
@@ -94,4 +84,4 @@ import {
         return state;
     }
   };
-  export default userReducer;
+  export default rootReducer;
