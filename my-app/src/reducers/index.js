@@ -1,5 +1,6 @@
 import {
     USER_LOGIN,
+    USER_VALUES,
     ERROR
   } from '../actions/index';
   
@@ -18,10 +19,18 @@ import {
         isFetching: false,
         currentUser: action.payload
       }
+     
+    case USER_VALUES: 
+      return {
+        ...state,
+        error: null,
+        isFetching: false,
+        currentUser: action.payload
+      }
       default: 
-        return state;
-    }
+      return state;
   }
+}
     
   //   switch (action.type) {
   //     case USER_GET_START:

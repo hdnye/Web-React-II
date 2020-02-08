@@ -1,6 +1,6 @@
 import React, { useState, useReducer } from 'react';
 import '../App.css';
-import { rootReducer, stateValues } from '../reducers';
+import { rootReducer } from '../reducers';
 // registration form 
 // basic information to register for the app
 

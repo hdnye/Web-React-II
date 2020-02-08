@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getUser } from '../actions';
 import styled from 'styled-components';
 
-class Login extends React.Component {
+class Login extends Component {
     constructor() {
       super();
         this.state = {

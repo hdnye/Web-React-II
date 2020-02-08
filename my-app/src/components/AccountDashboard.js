@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { rootReducer }  from '../reducers';
+import { getValues }  from '../actions';
 
 // import projects & values
 
  class AccountDashboard extends Component {
     componentWillUpdate() {
-        this.props.rootReducer();
-    }    
-
+        this.props.getUser();
+        this.props.getValues();
+    }  
+    
+    handleValues = values => {
+        this.props.getValues(values);
+    }
     render() {
-                    //.map
-            const dashItems = this.props.info.map(item => (
-                <div key={item.id}>
-                    <h3>{item.user}</h3>
-                    <p>{item.values}</p>
-                    <p>{item.projects}</p>
+        //.map
+          const dashItems = this.values && this.props.values.map(value => (
+                <div key={value.id}>
+                    <h3>{value.user}</h3>
+                    <p>{value.values}</p>
+                    <p>{value.projects}</p>
                 </div>
-            ));
-         return ( 
+           ));
+        return ( 
              <div>
                 <h1>Dashboard</h1> 
                   {dashItems}
@@ -28,7 +32,8 @@ import { rootReducer }  from '../reducers';
 }
 
 const mapStateToProps = state => ({
-    info: state.user //state var here
+     //state var here
+    values: state.values
 });
 
-export default connect(mapStateToProps, { rootReducer })(AccountDashboard);
+export default connect(mapStateToProps, { getValues })(AccountDashboard);
