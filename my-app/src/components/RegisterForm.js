@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import '../App.css';
-
+import { rootReducer, stateValues } from '../reducers';
 // registration form 
 // basic information to register for the app
 
 export default function RegisterForm () {
-    const [info, setInfo] = useState ({ name: '', email: '' });
+    const [info, setInfo] = useState('');
+    const [state, dispatch] = useReducer(rootReducer);
+
 
     const handleChange = e => {
-        setInfo({...info, [e.target.name]: e.target.value});
+        e.preventDefault();
+        dispatch({...state, [e.target.name]: e.target.value});
     }
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(info.name);
-        console.log(info.email);
+        // console.log(info.name);
+        // console.log(info.email);
+        dispatch({
+            type: 'USER_POST_START',
+            payload: 'info'
+        });
+        setInfo('');
     }
 
     return (
