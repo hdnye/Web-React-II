@@ -1,4 +1,4 @@
-import { axiosWithAuth } from "../../axiosWithAuth";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 export const USER_GET_START = "USER_GET_START";
 export const USER_GET_SUCCESS = "USER_GET_SUCCESS";
