@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { getValues }  from '../actions';
 
 // import projects & values
 
  class AccountDashboard extends Component {
     componentWillUpdate() {
+
         this.props.getUser();
         this.props.getValues();
     }  
@@ -23,6 +25,7 @@ import { getValues }  from '../actions';
                 </div>
            ));
         return ( 
+     
              <div>
                 <h1>Dashboard</h1> 
                   {dashItems}
@@ -32,6 +35,7 @@ import { getValues }  from '../actions';
 }
 
 const mapStateToProps = state => ({
+
      //state var here
     values: state.values
 });
