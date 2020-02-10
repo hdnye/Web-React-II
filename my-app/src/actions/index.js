@@ -1,4 +1,3 @@
-import React from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 // import { USER_LOGIN, ERROR } from './constants';

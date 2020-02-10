@@ -7,8 +7,8 @@ import './App.css';
 // components
 import AccountDashboard from './components/AccountDashboard';
 import PrivateRoute from './components/PrivateRoute';
-import Projects from './components/Projects';
-import Values from './components/Values';
+// import Projects from './components/Projects';
+// import Values from './components/Values';
 import Login from './components/Login';
 import RegisterForm from './components/RegisterForm';
 import { rootReducer } from './reducers';
@@ -23,8 +23,8 @@ function App() {
         <Router to='/register-form' component={RegisterForm} />
         <Route to='/login' component={Login} />
         <PrivateRoute exact path='/' component={AccountDashboard} />
-        <Route to='/values' component={Values} />
-        <Route to='/projects' component={Projects} />
+        {/* <Route to='/values' component={Values} /> */}
+        {/* <Route to='/projects' component={Projects} /> */}
       </Router>
     </div>
   );
