@@ -1,10 +1,12 @@
 import React, { useState, useReducer } from 'react';
+import { connect } from 'react-redux';
 import '../App.css';
 import { rootReducer } from '../reducers';
+import styled from 'styled-components';
 // registration form 
 // basic information to register for the app
 
-export default function RegisterForm () {
+const RegisterForm = () => {
     const [info, setInfo] = useState('');
     const [state, dispatch] = useReducer(rootReducer);
 
@@ -26,12 +28,13 @@ export default function RegisterForm () {
     }
 
     return (
-        <div className='form'>
-            <form onSubmit={event => handleSubmit(event)}>
+        <Wrapper>
+        
+            <Form onSubmit={event => handleSubmit(event)}>
 
                 <label>
                     Name:
-                    <input 
+                    <Input 
                         type='text'
                         name='name'
                         value={info.name}
@@ -43,7 +46,7 @@ export default function RegisterForm () {
 
                 <label>
                     Email:
-                    <input 
+                    <Input 
                         type='email'
                         name='email'
                         value={info.email}
@@ -53,10 +56,46 @@ export default function RegisterForm () {
 
                 <br/>
 
-                <button>Simplify My Life</button>
+                <Button>Simplify My Life</Button>
 
-            </form>
-        </div>
+            </Form>
+        </Wrapper>
     )
 }
 
+export default connect(null, { rootReducer })(RegisterForm);
+
+//styling
+
+const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background:  	#2dc8aa;
+`;
+
+const Button = styled.button`
+  background: #ee9701;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px;
+  font-weight: bold;
+`;
+
+const Input = styled.input`
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  border: 1px black;
+`;
+
+const Form = styled.form`
+  background: #89DCF5;
+  border-radius: 15px;
+  border: 7px ridge rgba(28,110,164,0.77);
+  padding: 40px;
+  margin: 0;
+  box-shadow: 10px 10px 8px #888888;
+`;

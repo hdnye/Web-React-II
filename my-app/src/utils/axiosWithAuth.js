@@ -4,7 +4,8 @@ const axiosWithAuth = () => {
   const token = localStorage.getItem('token');
 
   return axios.create({
-    baseUrl: 'https://deploy-serv-node-essentialism.herokuapp.com/auth/',
+    baseUrl: "https://essentialism-test-01.herokuapp.com/api/auth/",
+    // baseUrl: 'https://regres.in/',
     headers: {
       Authorization: token
     }

@@ -1,64 +1,91 @@
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { getUser } from '../actions';
 import styled from 'styled-components';
 
-class Login extends Component {
-    constructor() {
-      super();
-        this.state = {
-         username: '',
-         password: ''   
-    }
-} 
 
-   handleSubmit = (e) => {
-     e.preventDefault();
-     e.target.reset();
-  };
+const Login = ({ history, getUser }) => {
+  // const { register, handleSubmit } = useForm()
+  const [user, setUser] = useState({
+    username: '',
+    password: ''
+  });
 
-   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  
+  const handleChange = event => {
+    setUser(
+      {
+        ...user,
+        [event.target.name]: event.target.value
+      }
+    )
+
+  }
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log(user);
+    getUser(user, history)
+    event.target.reset();
+  }
+
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   axiosWithAuth
+  //     .get(`/login/${user}`, user)
+  //     .then(res => {
+  //       console.log(res)
+  //       localStorage.setItem('token', res.user.token)
+  //       localStorage.setIrem('username', user.username)
+  //       props.history.push('/account-dashboard')
+  //     })
+  //     .catch(err => console.log(err));
+  //   }
     
-  };
-
-  render() {
   return (
+    // <div className='login-form'>
     <Wrapper>
-      <h1>Welcome to Essentialism!</h1>
+      <Form onSubmit={handleSubmit}>
+        <label>
+          Username:
+          <br />
+          <Input 
+            name="username" 
+            // ref={register({ required: true, })} 
+            placeholder='Username' 
+            type='text'
+            onChange={handleChange}
+            />
+        </label>
+        <br />
+        <label>
+          Password:
+          <br />
+          <Input 
+            name="password" 
+            // ref={register({ required: true, })} 
+            placeholder='Password' 
+            type='password'
+            onChange={handleChange}
+            />
+            <br />
+            <Button type="submit">Login</Button>
+        </label>
       
-      <Form onSubmit={this.state.handleSubmit}>
-        <Input
-          type='text'
-          name='username'
-          value={this.state.username}
-          placeholder='Enter Username'
-          onChange={this.state.handleChange}
-        />
-        <Input
-          type='password'
-          name='password'
-          value={this.state.password}
-          placeholder='Enter Password'
-          onChange={this.state.handleChange}
-        />
-        <Button>Login</Button>
       </Form>
     </Wrapper>
+
   );
- };
-};
-
-const mapPropsToState = state => {
- return {
-   error: state.error,
-     username: state.username,
-     password: state.password    
  }
-}
 
-export default connect(mapPropsToState, { getUser })(Login);
+//   const mapPropsToState = state => {
+//     return {
+//       username: state.username,
+//       password: state.password
+//     }
+//   }
+
+ export default connect(null, { getUser })(Login);
 
 // Adding styling
 
